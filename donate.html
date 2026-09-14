@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Donate weiwei-hacking</title>
+    <title>Donate to weiwei_hacking</title>
     <!-- 自定義網頁圖標 (Favicon) -->
     <link rel="icon" type="image/png" href="https://ugc.production.linktr.ee/d7d3d6b0-9a57-4d90-b728-f5121693e7bf_image.png?io=true&size=square-fit">
     <!-- Tailwind CSS CDN -->
@@ -18,9 +18,8 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* 統一控制變數：你只需要修改這裡的秒數，背景、卡片、文字全部同步變快或變慢！ */
         :root {
-            --transition-speed: 0.2s; 
+            --transition-speed: 0.3s; 
         }
 
         body {
@@ -29,14 +28,12 @@
             min-height: 100vh;
         }
 
-        /* 動態漸層動畫 */
         @keyframes gradientBackground {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
 
-        /* 淺色模式背景層 */
         .dynamic-bg::before {
             content: "";
             position: fixed;
@@ -50,7 +47,6 @@
             pointer-events: none;
         }
 
-        /* 深色模式背景層 */
         .dynamic-bg::after {
             content: "";
             position: fixed;
@@ -91,7 +87,7 @@
         </div>
         
         <div class="flex items-center gap-3">
-            <a href="https://linktr.ee/你的名字" target="_blank" rel="noopener noreferrer" 
+            <a href="https://linktr.ee/weiwei_hacking" target="_blank" rel="noopener noreferrer" 
                class="px-3 py-1.5 rounded-full bg-white/70 dark:bg-slate-900/70 hover:bg-white dark:hover:bg-slate-800 text-xs font-semibold focus:outline-none flex items-center gap-1.5 backdrop-blur-md border border-slate-200/50 dark:border-slate-800 shadow-sm transition-all duration-300">
                 <i class="fa-solid fa-link text-emerald-500"></i>
                 <span data-i18n="linktree_btn">Linktree</span>
@@ -196,127 +192,144 @@
         <p>&copy; 2026 weiwei-hacking. Built with ❤️ and Gemini.</p>
     </footer>
 
-    <!-- 邏輯腳本：拿掉動態標題，換成等化器網址列波浪特效 -->
+    <!-- 確保所有 DOM 載入後才執行的安全腳本 -->
     <script>
-        const translations = {
-            en: {
-                brand: "Buy Me a Coffee",
-                title: "Support Me with Crypto",
-                description: "If you enjoy my open-source projects or content, consider supporting me via cryptocurrency. Thank you for your support! 🚀",
-                btc_network: "Network: Bitcoin (Native)",
-                ltc_network: "Network: Litecoin",
-                usdt_network: "Network: Polygon (ERC-20 compatible)",
-                copy_btn: "Copy",
-                copied_btn: "Copied",
-                lang_switch_text: "繁體中文",
-                linktree_btn: "Linktree"
-            },
-            "zh-TW": {
-                brand: "Buy Me a Coffee",
-                title: "用虛擬貨幣贊助我",
-                description: "如果你喜歡我的開源專案或影片內容，歡迎透過以下加密貨幣錢包地址贊助我。感謝你的支持！ 🚀",
-                btc_network: "網路: Bitcoin (原生網路)",
-                ltc_network: "網路: Litecoin",
-                usdt_network: "網路: Polygon (ERC-20 相容)",
-                copy_btn: "複製",
-                copied_btn: "已複製",
-                lang_switch_text: "English",
-                linktree_btn: "Linktree"
-            }
-        };
-
-        let currentLang = localStorage.getItem('lang') || 'en';
-        let urlWaveInterval = null;
-
-        function startMoonWave() {
-            if (urlWaveInterval) clearInterval(urlWaveInterval);
-            
-            // 把月亮陣列放兩份接在一起，確保永遠有源源不絕的月亮可以滾動
-            const baseMoons = ["🌑", "🌒", "🌓", "🌔", "🌕", "🌖", "🌗", "🌘"];
-            const moons = [...baseMoons, ...baseMoons]; 
-            let index = 0;
-            
-            urlWaveInterval = setInterval(() => {
-                // 每次截取固定長度的 8 顆月亮，製造流動感
-                let slicedMoons = moons.slice(index, index + 8);
-                let waveText = slicedMoons.join("");
-                
-                history.replaceState(null, "", "#" + waveText);
-                
-                // 循環索引
-                index = (index + 1) % baseMoons.length;
-            }, 50); // 調整這裡的毫秒數可以控制滾動速度
-        }
-
-        function updateTexts() {
-            document.querySelectorAll('[data-i18n]').forEach(element => {
-                const key = element.getAttribute('data-i18n');
-                if (translations[currentLang][key]) {
-                    element.textContent = translations[currentLang][key];
+        document.addEventListener('DOMContentLoaded', () => {
+            const translations = {
+                en: {
+                    brand: "Buy Me a Coffee",
+                    title: "Support Me with Crypto",
+                    description: "If you enjoy my open-source projects or video content, consider supporting me via cryptocurrency. Thank you for your support! 🚀",
+                    btc_network: "Network: Bitcoin (Native)",
+                    ltc_network: "Network: Litecoin",
+                    usdt_network: "Network: Polygon (ERC-20 compatible)",
+                    copy_btn: "Copy",
+                    copied_btn: "Copied",
+                    lang_switch_text: "繁體中文",
+                    linktree_btn: "Linktree"
+                },
+                "zh-TW": {
+                    brand: "Buy Me a Coffee",
+                    title: "用虛擬貨幣贊助我",
+                    description: "如果你喜歡我的開源專案或影片內容，歡迎透過以下加密貨幣錢包地址贊助我。感謝你的支持！ 🚀",
+                    btc_network: "網路: Bitcoin (原生網路)",
+                    ltc_network: "網路: Litecoin",
+                    usdt_network: "網路: Polygon (ERC-20 相容)",
+                    copy_btn: "複製",
+                    copied_btn: "已複製",
+                    lang_switch_text: "English",
+                    linktree_btn: "Linktree"
                 }
-            });
-            document.getElementById('lang-text').textContent = translations[currentLang]['lang_switch_text'];
-            document.documentElement.setAttribute('lang', currentLang);
-        }
+            };
 
-        updateTexts();
-        startUrlEqualizerWave(); // 啟動網址列等化器波浪
+            let currentLang = localStorage.getItem('lang') || 'en';
+            let urlWaveInterval = null;
 
-        document.getElementById('lang-toggle').addEventListener('click', () => {
-            currentLang = currentLang === 'en' ? 'zh-TW' : 'en';
-            localStorage.setItem('lang', currentLang);
+            // 月相滾動特效（確保不破圖、連續循環）
+            function startMoonWave() {
+                if (urlWaveInterval) clearInterval(urlWaveInterval);
+                
+                const baseMoons = ["🌑", "🌒", "🌓", "🌔", "🌕", "🌖", "🌗", "🌘"];
+                const moons = [...baseMoons, ...baseMoons]; 
+                let index = 0;
+                
+                urlWaveInterval = setInterval(() => {
+                    let slicedMoons = moons.slice(index, index + 8);
+                    let waveText = slicedMoons.join("");
+                    
+                    try {
+                        history.replaceState(null, "", "#" + waveText);
+                    } catch (e) {
+                        // 避免某些雲端平台的安全性限制造成報錯中斷
+                    }
+                    
+                    index = (index + 1) % baseMoons.length;
+                }, 50);
+            }
+
+            function updateTexts() {
+                document.querySelectorAll('[data-i18n]').forEach(element => {
+                    const key = element.getAttribute('data-i18n');
+                    if (translations[currentLang] && translations[currentLang][key]) {
+                        element.textContent = translations[currentLang][key];
+                    }
+                });
+                const langTextEl = document.getElementById('lang-text');
+                if (langTextEl) {
+                    langTextEl.textContent = translations[currentLang]['lang_switch_text'];
+                }
+                document.documentElement.setAttribute('lang', currentLang);
+            }
+
             updateTexts();
+            startMoonWave();
+
+            // 語系切換按鈕事件
+            const langToggleBtn = document.getElementById('lang-toggle');
+            if (langToggleBtn) {
+                langToggleBtn.addEventListener('click', () => {
+                    currentLang = currentLang === 'en' ? 'zh-TW' : 'en';
+                    localStorage.setItem('lang', currentLang);
+                    updateTexts();
+                });
+            }
+
+            // 深淺色主題切換
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            const themeIcon = document.getElementById('theme-icon');
+            const htmlElement = document.documentElement;
+
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'light') {
+                htmlElement.classList.remove('dark');
+                if (themeIcon) themeIcon.className = 'fa-solid fa-moon text-slate-700';
+            } else {
+                htmlElement.classList.add('dark');
+                if (themeIcon) themeIcon.className = 'fa-solid fa-sun text-yellow-400';
+            }
+
+            if (themeToggleBtn) {
+                themeToggleBtn.addEventListener('click', () => {
+                    if (htmlElement.classList.contains('dark')) {
+                        htmlElement.classList.remove('dark');
+                        localStorage.setItem('theme', 'light');
+                        if (themeIcon) themeIcon.className = 'fa-solid fa-moon text-slate-700';
+                    } else {
+                        htmlElement.classList.add('dark');
+                        localStorage.setItem('theme', 'dark');
+                        if (themeIcon) themeIcon.className = 'fa-solid fa-sun text-yellow-400';
+                    }
+                });
+            }
         });
 
+        // 複製按鈕全域函數
         function copyAddress(button) {
             const input = button.parentElement.querySelector('input');
+            if (!input) return;
+            
             input.select();
             input.setSelectionRange(0, 99999);
             
             navigator.clipboard.writeText(input.value).then(() => {
                 const textSpan = button.querySelector('span');
-                const originalText = textSpan.textContent;
-                
-                textSpan.textContent = translations[currentLang]['copied_btn'];
                 const icon = button.querySelector('i');
-                icon.className = 'fa-solid fa-check';
+                const originalText = textSpan ? textSpan.textContent : '';
+                
+                if (textSpan) textSpan.textContent = "Copied";
+                if (icon) icon.className = 'fa-solid fa-check';
                 
                 button.classList.remove('bg-emerald-500', 'hover:bg-emerald-600');
                 button.classList.add('bg-blue-600', 'hover:bg-blue-700');
                 
                 setTimeout(() => {
-                    textSpan.textContent = originalText;
-                    icon.className = 'fa-regular fa-copy';
+                    if (textSpan) textSpan.textContent = originalText;
+                    if (icon) icon.className = 'fa-regular fa-copy';
                     button.classList.remove('bg-blue-600', 'hover:bg-blue-700');
                     button.classList.add('bg-emerald-500', 'hover:bg-emerald-600');
                 }, 2000);
             });
         }
-
-        const themeToggleBtn = document.getElementById('theme-toggle');
-        const themeIcon = document.getElementById('theme-icon');
-        const htmlElement = document.documentElement;
-
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'light') {
-            htmlElement.classList.remove('dark');
-            themeIcon.className = 'fa-solid fa-moon text-slate-700';
-        } else {
-            htmlElement.classList.add('dark');
-            themeIcon.className = 'fa-solid fa-sun text-yellow-400';
-        }
-
-        themeToggleBtn.addEventListener('click', () => {
-            if (htmlElement.classList.contains('dark')) {
-                htmlElement.classList.remove('dark');
-                localStorage.setItem('theme', 'light');
-                themeIcon.className = 'fa-solid fa-moon text-slate-700';
-            } else {
-                htmlElement.classList.add('dark');
-                localStorage.setItem('theme', 'dark');
-                themeIcon.className = 'fa-solid fa-sun text-yellow-400';
-            }
-        });
     </script>
 </body>
 </html>
