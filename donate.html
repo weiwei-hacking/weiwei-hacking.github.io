@@ -225,30 +225,30 @@
             let currentLang = localStorage.getItem('lang') || 'en';
             let urlWaveInterval = null;
 
-            // 月相滾動特效（確保不破圖、連續循環）
+            // 月相逐個反向漸變效果
             function startMoonWave() {
                 if (urlWaveInterval) clearInterval(urlWaveInterval);
             
-                // 月相變化的順序（從 🌑 到 🌕）
-                const moonPhases = ["🌑", "🌒", "🌓", "🌔", "🌕"];
+                // 月相變化的順序（從 🌕 到 🌑）
+                const moonPhases = ["🌕", "🌖", "🌗", "🌘", "🌑"];
                 
                 // 初始化 8 個月的狀態，每個陣列數值代表月相陣列 (moonPhases) 的索引
-                // 0 = 🌑, 1 = 🌒, 2 = 🌓, 3 = 🌔, 4 = 🌕
+                // 0 = 🌕, 1 = 🌖, 2 = 🌗, 3 = 🌘, 4 = 🌑
                 let currentPhases = [0, 0, 0, 0, 0, 0, 0, 0];
                 
                 let currentMoonIndex = 0; // 當前正在變化的月亮位置 (0 ~ 7)
-                let isWaxing = true;      // true: 漸亮 (漸滿), false: 漸暗 (漸缺)
+                let isWaxing = true;      // true: 漸暗 (從滿月變新月), false: 漸亮 (從新月變滿月)
             
                 urlWaveInterval = setInterval(() => {
                     if (isWaxing) {
-                        // 漸亮階段：當前月亮往滿月 (index 4) 推進
+                        // 漸暗階段：當前月亮往新月 (index 4) 推進
                         if (currentPhases[currentMoonIndex] < moonPhases.length - 1) {
                             currentPhases[currentMoonIndex]++;
                         } else {
-                            // 當前月亮已經完全變成 🌕，換下一個月亮
+                            // 當前月亮已經完全變成 🌑，換下一個月亮
                             currentMoonIndex++;
                             if (currentMoonIndex >= currentPhases.length) {
-                                // 全部 8 個月亮都變成 🌕 了，切換為漸暗模式
+                                // 全部 8 個月亮都變成 🌑 了，切換為漸亮模式
                                 isWaxing = false;
                                 currentMoonIndex = 0;
                             } else {
@@ -256,14 +256,14 @@
                             }
                         }
                     } else {
-                        // 漸暗階段：當前月亮往新月 (index 0) 推進
+                        // 漸亮階段：當前月亮往滿月 (index 0) 推進
                         if (currentPhases[currentMoonIndex] > 0) {
                             currentPhases[currentMoonIndex]--;
                         } else {
-                            // 當前月亮已經完全變成 🌑，換下一個月亮
+                            // 當前月亮已經完全變成 🌕，換下一個月亮
                             currentMoonIndex++;
                             if (currentMoonIndex >= currentPhases.length) {
-                                // 全部 8 個月亮都變成 🌑 了，切換為漸亮模式
+                                // 全部 8 個月亮都變成 🌕 了，切換為漸暗模式
                                 isWaxing = true;
                                 currentMoonIndex = 0;
                             } else {
@@ -280,7 +280,7 @@
                     } catch (e) {
                         // 避免安全性限制導致的報錯
                     }
-                }, 120); // 120ms 可調整動畫速度（數字越小變化越快）
+                }, 120); // 120ms 可調整動畫速度
             }
 
             function updateTexts() {
